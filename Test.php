@@ -84,6 +84,3 @@ echo <<<END
 END;
 
 
-function new_function(){
-
-}
