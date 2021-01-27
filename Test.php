@@ -83,5 +83,4 @@ echo <<<END
 
 END;
 
-echo "Hello";
-echo "TEST";
+
