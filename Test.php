@@ -10,7 +10,7 @@ if ($conn->connect_error) die($conn->connect_error);
 if (isset($_POST['reg'])) {
     registr($conn);
 }
-if (isset($_POST['enter'])){
+if (isset($_POST['enter'])) {
     enter_user($conn);
 }
 
@@ -73,7 +73,7 @@ END;
 
 echo <<<END
 <hr>  
-         <form action="">
+         <form method="post">
             Логин<input type="text" placeholder="введите логин" name="login_enter" >
             Пароль<input type="text" placeholder="введите пароль" name="pass_enter" >
             
@@ -82,5 +82,51 @@ echo <<<END
          </form>
 
 END;
+
+
+echo <<<END
+<hr>  
+         <form method="post">
+            Введите дело<input type="text" placeholder="введите логин" name="ToDo" value="null">
+            <input type="submit" value="Добавить" name="add_do">
+            
+         </form>
+
+END;
+
+if (isset($_POST['add_do'])) {
+    add_do($conn);
+}
+
+function add_do($conn)
+{
+    if (isset($_POST['ToDo']) && $_POST['ToDo'] != "null") {
+        $todo = $_POST['ToDo'];
+        $query = "insert into todo (name,user_id) values" . "('$todo',16)";
+        $result = $conn->query($query);
+        if (!$result) {
+            echo "DONT WORK  $query";
+        } else {
+            echo "WORK";
+            $q = "SELECT todo.name FROM `user` INNER JOIN todo on user.id = todo.user_id";
+            $r = $conn->query($q);
+            $rows = mysqli_num_rows($r); // количество полученных строк
+            for ($i = 0; $i < $rows; ++$i) {
+                $row = mysqli_fetch_row($r);
+                echo "<li>";
+                for ($j = 0; $j < 1; ++$j) {
+                    echo "<td>$row[$j]</td>";
+                }
+                echo "</li>";
+            }
+            mysqli_free_result($r);
+
+        }
+
+    }
+}
+
+
+
 
 
