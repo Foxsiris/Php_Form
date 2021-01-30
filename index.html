@@ -2,30 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="source/css/reg_form.css">
     <title>Title</title>
 </head>
 <body>
+<div id="main_wrapper">
     <div>
-        <form method="post"  action="reg.php">
+        <form method="post" action="reg.php">
 
-            Ваше имя ?<input type="text" name="name" placeholder="Max" required="required" value="null"><br>
-            Логин <input type="text" name="login" placeholder="Max" required="required" value="null"><br>
-            Пароль<input type="password" name="pass" placeholder="Max"   ><br>
+            Ваше имя ?<input type="text" name="name" placeholder="Max" required="required" ><br>
+            Логин <input type="text" name="login" placeholder="Max" required="required" ><br>
+            Пароль<input type="password" name="pass" placeholder="Max"><br>
 
             <input type="submit" value="регистрация" name="reg">
-            <form/>
+            </form>
     </div>
 
 
-   <div>
-       <form method="post" action="enter.php">
-           Логин<input type="text" placeholder="введите логин" name="login_enter" >
-           Пароль<input type="text" placeholder="введите пароль" name="pass_enter" >
+    <div>
+        <form method="post" action="enter.php">
+            Логин<input type="text" placeholder="введите логин" name="login_enter" required="required">
+            <br>
+            Пароль<input type="text" placeholder="введите пароль" name="pass_enter" required="required">
+            <br>
+            <input type="submit" value="Войти" name="enter">
 
-           <input type="submit" value="Войти" name="enter">
-
-       </form>
-   </div>
+        </form>
+    </div>
 
     <div>
         <form method="post" action="enter.php">
@@ -34,5 +37,6 @@
 
         </form>
     </div>
+</div>
 </body>
 </html>
